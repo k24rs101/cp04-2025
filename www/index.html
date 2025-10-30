@@ -39,7 +39,7 @@
             btnCClick(e);
         });
         $('#btnD').click(function(e) {
-            btnCClick(e);
+            btnDClick(e);
         });
         init();
     });
@@ -161,7 +161,7 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
-        $('#btnC').prop('disabled', false);
+        $('#btnD').prop('disabled', false);
         
     }
 
@@ -182,6 +182,7 @@
         var startTime = 0;
         var period = 0;
         var rest = 0;
+        var etime = 0;
     }
     
     // ButtonAがクリックされた時の処理
@@ -193,6 +194,7 @@
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false;
+        a=etime;
         $("#time").html("停止中");
     }
 
@@ -208,7 +210,8 @@
     }
 
     function btnDClick(e){
-        
+        active=true;
+        startTime=new Date() - a*1000;      
     }
 
     
@@ -232,9 +235,9 @@
     } 
     function changeBackgroundColor(rest){
         let body = document.body;
-        if (rest > 10) {
+        if (rest > 30) {
             body.style.backgroundColor = "#e0ffe0"; // 緑
-        } else if (rest > 5) {
+        } else if (rest > 15) {
             body.style.backgroundColor = "#fff3b0"; // 黄
         } else {
             body.style.backgroundColor = "#ffb0b0"; // 赤
@@ -257,6 +260,6 @@
     <button id="btnC">Set</button>
     <button id="btnD">Restart</button>   
     <input type="number" id="minute" value=0 >
-    <input type="number" id="second" value=15 >
+    <input type="number" id="second" value=45 >
 </body>
 </html>
