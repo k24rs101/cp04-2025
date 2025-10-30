@@ -41,6 +41,10 @@
         $('#btnD').click(function(e) {
             btnDClick(e);
         });
+        $('#btnE').click(function(e) {
+            btnEClick(e);
+        });
+
         init();
     });
     
@@ -162,6 +166,7 @@
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
         $('#btnD').prop('disabled', false);
+        $('#btnE').prop('disabled', false);
         
     }
 
@@ -214,6 +219,21 @@
         startTime=new Date() - a*1000;      
     }
 
+    function btnEClick(){
+      period = 180;  // 3分 = 180秒
+      etime = 0;
+      rest = period;
+      a = 0;
+      $("#minute").val(3);
+      $("#second").val(0);
+      $("#time").html("経過時間：0");
+      $("#remain").html("残り時間：" + rest);
+      changeBackgroundColor(rest);
+      analog(rest);
+      active = true;
+      startTime = new Date(); // 自動スタート
+    }
+
     
  
     // 繰り返し実行する処理
@@ -229,9 +249,7 @@
                 alarm(); 
             }
         }
-        
-        
-        
+         
     } 
     function changeBackgroundColor(rest){
         let body = document.body;
@@ -258,7 +276,8 @@
     <button id="btnA">Start</button>  
     <button id="btnB">Stop</button>  
     <button id="btnC">Set</button>
-    <button id="btnD">Restart</button>   
+    <button id="btnD">Restart</button> 
+    <button id="btnE">３分タイマー</button>   
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=45 >
 </body>
