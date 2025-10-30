@@ -195,9 +195,11 @@
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
-        active = false;
-        
-        
+        if (active) {
+            active = false;
+            // 停止した時点で残り時間を記録
+            rest = period - etime;
+        }
     }
 
     // ButtonCがクリックされた時の処理
@@ -210,8 +212,6 @@
         
     }
     function btnDClick(e){
-        active = false;
-        
         
     }
     
