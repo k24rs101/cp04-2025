@@ -177,11 +177,14 @@
         var audio = new Audio();
         audio.src = "pin.wav";
         audio.play();
+         $("#remain").html("<b style='color:red;'>お疲れ様でした！</b>");
         var active = false;
         var startTime = 0;
         var period = 0;
         var rest = 0;
         var etime = 0;
+        var paused = false;      // ←追加：一時停止中フラグ
+        var pausedRest = 0;      // ←追加：停止時の残り時間
         
     }
     
@@ -195,11 +198,10 @@
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
-        if (active) {
-            active = false;
-            // 停止した時点で残り時間を記録
-            rest = period - etime;
-        }
+        active = false;
+        a=etime;
+        $("#time").html("停止中");
+        $("#remain").html("現在" );
     }
 
     // ButtonCがクリックされた時の処理
@@ -212,7 +214,8 @@
         
     }
     function btnDClick(e){
-        
+        active = true;
+        startTime=new Data()-a;
     }
     
  
